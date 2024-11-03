@@ -14,6 +14,9 @@ class NoDeathMessages : JavaPlugin() {
 
     override fun onDisable() {
         // Plugin shutdown logic
-        logger.info("NoDeathMessages plugin has been disabled.")
+        server.worlds.forEach { world ->
+            world.setGameRuleValue("showDeathMessages", "true")
+            logger.info("NoDeathMessages plugin has been disabled.")
+        }
     }
 }
